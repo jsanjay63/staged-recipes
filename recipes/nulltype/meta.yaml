@@ -1,0 +1,41 @@
+{% set name = "nulltype" %}
+{% set version = "2.3.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 64aa3cb2ab5e904d1b37175b9b922bea268c13f9ce32e3d373313150ab5ef272
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+
+test:
+  requires:
+    - coverage
+    - pytest
+    - pytest-cov
+    - tox
+
+about:
+  home: "https://bitbucket.org/jeunice/nulltype"
+  license: Apache Software
+  license_family: APACHE
+  license_file: 
+  summary: "Null values and sentinels like (but not) None, False & True"
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - jsanjay63
